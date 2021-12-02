@@ -17,6 +17,7 @@ class MoneyAgent(Agent):
     def __init__(self, unique_id, model):
         super().__init__(unique_id, model)
         self.wealth = 1
+        self.too_rich = False
 
     # using get_neighbourhood method which returns all the neighbors of a given cell (8 total).
     def move(self):
@@ -31,12 +32,14 @@ class MoneyAgent(Agent):
         cellmates = self.model.grid.get_cell_list_contents([self.pos])
         if len(cellmates) > 1:
             other_agent = self.random.choice(cellmates)
-            other_agent.wealth += 1
-            self.wealth -= 1
+            #print(f"other_agent.wealth: {other_agent.wealth}")
+            if other_agent.wealth < 5:
+                other_agent.wealth += 1
+                self.wealth -= 1
 
     def step(self):
         self.move()
-        if self.wealth > 0:
+        if self.wealth > 0: # & self.wealth < 2:
             self.give_money()
         #print(f"Hi, I am agent {str(self.unique_id)} and my wealth is: {str(self.wealth)}.")
 

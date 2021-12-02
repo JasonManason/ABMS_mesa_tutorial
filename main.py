@@ -24,9 +24,10 @@ plt.colorbar()
 plt.show()
 
 # To get the series of Gini coefficients as a pandas DataFrame:
-gini = model.datacollector.get_model_vars_dataframe()
-gini.plot()
-plt.show()
+# gini = model.datacollector.get_model_vars_dataframe()
+# gini.plot()
+# plt.show()
 
+# Run in jupyter notebook to see a pandas DataFrame with the agent-wealth data:
 # agent_wealth = model.datacollector.get_agent_vars_dataframe()
 # agent_wealth.head()
